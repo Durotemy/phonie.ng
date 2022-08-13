@@ -1,13 +1,20 @@
 input {
-  width: 30%;
-  margin-top: 10rem;
   border-radius: 0.25rem;
   border: 1px solid #ccc;
   padding: 0.5rem;
-  /* background-color: rgb(146, 72, 72); */
+  outline: none;
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
 }
-.field {
-  margin-top: 5rem;
+.container {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  /* justify-content: space-around; */
 }
 .btn {
   margin-top: 1rem;
@@ -15,6 +22,20 @@ input {
   width: 4rem;
 }
 .image {
-  width: 10%;
-  height: 10%;
+  background-color: black;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+img {
+  background-color: black;
+  width: 20%;
+  height: 30%;
+  /* margin-right: 10rem; */
+}
+* {
+  /* background-color: yellowgreen; */
 }
