@@ -1,8 +1,8 @@
-import { controller } from "../controller/phoneNumberController";
+import { getTelcoController } from "../controller/telco";
 import { validRequest } from "../middleware/phoneNumberValidate";
 import express from "express";
 
 const router = express.Router();
-router.get("/validate", validRequest, controller);
+router.post("/validate", validRequest, getTelcoController);
 
 export default router;

@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 // import moongose from "moongose";
 import requestIP from "request-ip";
 import { lookup } from "geoip-lite";
-import telephone from "../model/phoneNumberModel";
+import phoneLineModel from "../model/phoneNumberModel";
 
 type Telco = "MTN" | "GLO" | "Airtel" | "Etisalat" | "NTEL" | "SMILE";
 type PhoneNumber = string;
@@ -95,7 +95,7 @@ const isSmile = (phoneNumber: PhoneNumber): boolean => {
  * @returns the telco of the phone number provided.
  */
 
-export const controller = async (req: Request, res: Response) => {
+export const getTelcoController = async (req: Request, res: Response) => {
   try {
     const { phoneNumber } = req.body;
     const ip: any = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
@@ -104,7 +104,6 @@ export const controller = async (req: Request, res: Response) => {
     console.log("location", location?.country);
 
     const nums = phoneNumber.match(/\d/g);
-
     if (phoneNumber.length !== nums.length) {
       return res.status(400).json({ msg: "inputs can only be numbers" });
     }
@@ -123,12 +122,11 @@ export const controller = async (req: Request, res: Response) => {
         error: "please check that you are providing a Nigeria phoneNumber ",
       });
     }
-    const phone = await new telephone({
+    const phoneValidated = await new phoneLineModel({
       phoneNumber,
       location: location,
     });
-    const phoneer = await phone.save();
-    // console.log("phoneer", phoneer);
+    phoneValidated.save();
     return res.status(200).json({ telco });
   } catch (error: any) {
     res.send(error.message);

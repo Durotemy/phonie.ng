@@ -1,0 +1,14 @@
+Mentor Charlse: Okay
+ I have some sets of changes for you to implement
+ I made a dev branch from your main branch
+ You now need to make a new branch from the dev branch, so we can raise a PR when the changes are ready and reviewed.
+ Changes 1 (branch use a new branch from dev branch)
+============================================
+1. Move nodemon to devDependencies
+2. Not sure we need /backend/public folder, not when there's already a /frontend in the project
+3. Delete /backend/src/rub.ts if its no longer useful
+4. /routes/phoneNumber.ts should be properly named to something like  /routes/telco.ts so that line 6 can of the file can be like `router.get("/telco",  validRequest,  controller);` and a typical HTTP request will be like `GET api/v1/telco`
+5. Rename the Controller to getTelcoController.ts
+6. Refactor /backend/src/model/phoneNumberModel.ts, use a better name at line 3 (e.g MobilePhoneLine) . Line 8 can be named as `phoneLineSchema` and line 23 can be `phoneLineModel`
+[5:54 PM, 8/28/2022] Mentor Charlse: 7. Move the validation logic inside the controller function (line 106 to line 119) into the middleware
+[5:55 PM, 8/28/2022] Mentor Charlse: After the changes, raise a PR against the dev branch and I will review it

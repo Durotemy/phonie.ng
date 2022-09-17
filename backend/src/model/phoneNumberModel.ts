@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
-type Number = {
+type MobilePhoneLine = {
   phoneNumber: string;
   location: any;
 };
 
-const phoneSchema = new mongoose.Schema<Number>(
+const phoneLineSchema = new mongoose.Schema<MobilePhoneLine>(
   {
     phoneNumber: {
       type: String,
@@ -20,6 +20,6 @@ const phoneSchema = new mongoose.Schema<Number>(
     timestamps: true,
   }
 );
-const Telephone = mongoose.model("phoneNumber", phoneSchema);
+const phoneLineModel = mongoose.model("phoneNumber", phoneLineSchema);
 
-export default Telephone;
+export default phoneLineModel;

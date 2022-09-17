@@ -18,3 +18,7 @@ export function validRequest(req: Request, res: Response, next: NextFunction) {
       res.send(err.details[0].message);
     });
 }
+
+export const validateTelcoNumbers = ()=>{
+  
+}
